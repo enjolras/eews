@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="eews"
+ targetNamespace="eews.wsdl"
+ xmlns:tns="eews.wsdl"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:ns="urn:eews"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+ <schema targetNamespace="urn:eews"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:eews"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <complexType name="pluginInfo">
+   <sequence>
+    <element name="uniqid" type="xsd:string"/>
+    <element name="desc" type="xsd:string"/>
+    <element name="version" type="xsd:int"/>
+    <element name="status" type="xsd:int"/>
+   </sequence>
+  </complexType>
+  <complexType name="pluginL">
+   <complexContent>
+    <restriction base="SOAP-ENC:Array">
+     <attribute ref="SOAP-ENC:arrayType" WSDL:arrayType="ns:pluginInfo[]"/>
+    </restriction>
+   </complexContent>
+  </complexType>
+  <complexType name="languageInfo">
+   <sequence>
+    <element name="uniqid" type="xsd:string"/>
+    <element name="name" type="xsd:string"/>
+    <element name="version" type="xsd:string"/>
+    <element name="description" type="xsd:string"/>
+   </sequence>
+  </complexType>
+  <complexType name="languageL">
+   <complexContent>
+    <restriction base="SOAP-ENC:Array">
+     <attribute ref="SOAP-ENC:arrayType" WSDL:arrayType="ns:languageInfo[]"/>
+    </restriction>
+   </complexContent>
+  </complexType>
+  <complexType name="submissionData">
+   <sequence>
+    <element name="language" type="xsd:string"/>
+    <element name="plugin" type="xsd:string"/>
+    <element name="priority" type="xsd:int"/>
+    <element name="code" type="xsd:string"/>
+    <element name="lo" type="xsd:string"/>
+   </sequence>
+  </complexType>
+  <complexType name="ticketResult">
+   <sequence>
+    <element name="verdict" type="xsd:int"/>
+    <element name="stderr" type="xsd:string"/>
+    <element name="timeusage" type="xsd:int"/>
+    <element name="memusage" type="xsd:int"/>
+    <element name="queuepos" type="xsd:int"/>
+    <element name="status" type="xsd:int"/>
+    <element name="statusstr" type="xsd:string"/>
+    <element name="result" type="xsd:int"/>
+    <element name="resultstr" type="xsd:string"/>
+   </sequence>
+  </complexType>
+  <complexType name="ticketResultDump">
+   <complexContent>
+    <restriction base="SOAP-ENC:Array">
+     <attribute ref="SOAP-ENC:arrayType" WSDL:arrayType="ns:ticketResult[]"/>
+    </restriction>
+   </complexContent>
+  </complexType>
+ </schema>
+</types>
+
+<message name="getCapabilitiesRequest" />
+
+<message name="getCapabilitiesResponse">
+ <part name="protocol" type="xsd:int"/>
+ <part name="version" type="xsd:int"/>
+ <part name="versionString" type="xsd:string"/>
+ <part name="adminEmail" type="xsd:string"/>
+ <part name="owner" type="xsd:string"/>
+ <part name="languages" type="ns:languageL"/>
+ <part name="plugins" type="ns:pluginL"/>
+</message>
+
+<message name="getTicketResultRequest">
+ <part name="ticket" type="xsd:string"/>
+</message>
+
+<message name="getTicketResultResponse">
+ <part name="ticketResult" type="ns:ticketResult"/>
+</message>
+
+<message name="getTicketDumpRequest"/>
+
+<message name="getTicketDumpResponse">
+ <part name="ticketDump" type="ns:ticketResultDump"/>
+</message>
+
+<message name="submitCodeRequest">
+ <part name="data" type="ns:submissionData"/>
+</message>
+
+<message name="submitCodeResponse">
+ <part name="ticket" type="xsd:string"/>
+</message>
+
+<portType name="eewsPortType">
+ <operation name="getCapabilities">
+  <documentation>Get capabilities from the server</documentation>
+  <input message="tns:getCapabilitiesRequest"/>
+  <output message="tns:getCapabilitiesResponse"/>
+ </operation>
+ <operation name="submitCode">
+  <documentation>Submit a users code</documentation>
+  <input message="tns:submitCodeRequest"/>
+  <output message="tns:submitCodeResponse"/>
+ </operation>
+ <operation name="getTicketResult">
+  <documentation>Get the current status of a single ticket</documentation>
+  <input message="tns:getTicketResultRequest"/>
+  <output message="tns:getTicketResultResponse"/>
+ </operation>
+ <operation name="getTicketDump">
+  <documentation>Get the current status of all the tickets</documentation>
+  <input message="tns:getTicketDumpRequest"/>
+  <output message="tns:getTicketDumpResponse"/>
+ </operation>
+</portType>
+
+<binding name="eews" type="tns:eewsPortType">
+ <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="getCapabilities">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eews" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eews" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="submitCode">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+   <SOAP:body use="encoded" namespace="urn:eews" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+   <SOAP:body use="encoded" namespace="urn:eews" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="getTicketResult">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+   <SOAP:body use="encoded" namespace="urn:eews" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+   <SOAP:body use="encoded" namespace="urn:eews" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="getTicketDump">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+   <SOAP:body use="encoded" namespace="urn:eews" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+   <SOAP:body use="encoded" namespace="urn:eews" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+</binding>
+
+<service name="eews">
+ <documentation>Evaluation Engine Web Services</documentation>
+ <port name="eews" binding="tns:eews">
+  <SOAP:address location="http://www.edujudge.eu"/>
+ </port>
+</service>
+
+</definitions>

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/repos/!svn/ver/595/trunk/eews/solutions/qtservice-2.6
+END
+LICENSE.LGPL
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/LICENSE.LGPL
+END
+common.pri
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/common.pri
+END
+configure
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/configure
+END
+INSTALL.TXT
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/INSTALL.TXT
+END
+qtservice.pro
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/qtservice.pro
+END
+LICENSE.GPL3
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/LICENSE.GPL3
+END
+.licenseAccepted
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/!svn/ver/595/trunk/eews/solutions/qtservice-2.6/.licenseAccepted
+END
+LGPL_EXCEPTION.txt
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/LGPL_EXCEPTION.txt
+END
+README.TXT
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/README.TXT
+END

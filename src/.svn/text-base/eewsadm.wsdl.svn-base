@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="eewsadm"
+ targetNamespace="eewsadm.wsdl"
+ xmlns:tns="eewsadm.wsdl"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:ns="urn:eewsadm"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+ <schema targetNamespace="urn:eewsadm"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:eewsadm"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <complexType name="PluginData">
+    <sequence>
+      <element name="uniqid" type="xsd:string"/>
+      <element name="desc" type="xsd:string"/>
+      <element name="version" type="xsd:int"/>
+      <element name="status" type="xsd:int"/>
+      <element name="autoload" type="xsd:int"/>
+    </sequence>
+  </complexType>
+  <complexType name="PluginList">
+    <complexContent>
+      <restriction base="SOAP-ENC:Array">
+	<attribute ref="SOAP-ENC:arrayType" WSDL:arrayType="ns:PluginData[]"/>
+      </restriction>
+    </complexContent>
+  </complexType>
+  <complexType name="LanguageData">
+   <sequence>
+    <element name="uniqid" type="xsd:string"/>
+    <element name="name" type="xsd:string"/>
+    <element name="version" type="xsd:string"/>
+    <element name="description" type="xsd:string"/>
+    <element name="compile" type="xsd:string"/>
+    <element name="link" type="xsd:string"/>
+    <element name="run" type="xsd:string"/>
+    <element name="srcext" type="xsd:string"/>
+    <element name="objext" type="xsd:string"/>
+    <element name="exeext" type="xsd:string"/>
+    <element name="memoffset" type="xsd:int"/>
+    <element name="calcode" type="xsd:string"/>
+   </sequence>
+  </complexType>
+  <complexType name="LanguageList">
+   <complexContent>
+    <restriction base="SOAP-ENC:Array">
+     <attribute ref="SOAP-ENC:arrayType" WSDL:arrayType="ns:LanguageData[]"/>
+    </restriction>
+   </complexContent>
+  </complexType>
+  <complexType name="QueueItem">
+   <sequence>
+    <element name="ticket" type="xsd:string"/>
+    <element name="priority" type="xsd:int"/>
+    <element name="timestamp" type="xsd:int"/>
+    <element name="language" type="xsd:string"/>
+    <element name="plugin" type="xsd:string"/>
+   </sequence>
+  </complexType>
+  <complexType name="QueueList">
+   <complexContent>
+    <restriction base="SOAP-ENC:Array">
+     <attribute ref="SOAP-ENC:arrayType" WSDL:arrayType="ns:QueueItem[]"/>
+    </rectriction>
+   </complexContent>
+  </complexType>
+  <complexType name="PluginField">
+   <sequence>
+    <element name="fieldname" type="xsd:string"/>
+    <element name="fieldtype" type="xsd:string"/>
+    <element name="fielddefault" type="xsd:string"/>
+    <element name="fieldmin" type="xsd:int"/>
+    <element name="fieldmax" type="xsd:int"/>
+   </sequence>
+  </complexType>
+  <complexType name="PluginFieldList">
+   <complexContent>
+    <restriction base="SOAP-ENC:Array">
+       <attribute ref="SOAP-ENC:arrayType" WSDL:arrayType="ns:PluginField[]"/>
+    </restriction>
+   </complexContent>
+  </complexType>
+ </schema>
+</types>
+
+<message name="getQueueRequest">
+ <part name="queue" type="xsd:string"/>
+</message>
+
+<message name="getQueueResponse">
+ <part name="queueList" type="ns:QueueList"/>
+</message>
+
+<message name="getPluginDataRequest">
+ <part name="uniqid" type="xsd:string"/>
+</message>
+
+<message name="getPluginDataResponse">
+ <part name="pluginData" type="ns:PluginData"/>
+</message>
+
+<message name="getPluginFieldListRequest">
+ <part name="uniqid" type="xsd:string"/>
+</message>
+
+<message name="getPluginFieldListResponse">
+ <part name="pluginFieldList" type="ns:PluginFieldList"/>
+</message>
+
+<message name="getPluginFieldValueRequest">
+ <part name="uniqid" type="xsd:string"/>
+ <part name="field" type="xsd:string"/>
+</message>
+
+<message name="getPluginFieldValueResponse">
+ <part name="value" type="xsd:string"/>
+</message>
+
+<message name="setPluginFieldValueRequest">
+ <part name="uniqid" type="xsd:string"/>
+ <part name="field" type="xsd:string"/>
+ <part name="value" type="xsd:string"/>
+</message>
+
+<message name="setPluginFieldValueResponse">
+ <part name="status" type="xsd:int"/>
+</message>
+
+<message name="versionRequest"/>
+
+<message name="versionResponse">
+ <part name="id" type="xsd:int"/>
+ <part name="desc" type="xsd:string"/>
+</message>
+
+<message name="getPluginListRequest"/>
+
+<message name="getPluginListResponse">
+  <part name="pluginList" type="ns:PluginList"/>
+</message>
+
+<message name="getLanguageListRequest"/>
+
+<message name="getLanguageListResponse">
+ <part name="languageList" type="ns:LanguageList"/>
+</message>
+
+<message name="addLanguageRequest">
+ <part name="languageData" type="ns:LanguageData"/>
+</message>
+
+<message name="addLanguageResponse">
+ <part name="status" type="xsd:int"/>
+</message>
+
+<message name="removeLanguageRequest">
+ <part name="id" type="xsd:string"/>
+</message>
+
+<message name="removeLanguageResponse">
+ <part name="status" type="xsd:int"/>
+</message>
+
+<message name="calibrateLanguageRequest">
+ <part name="id" type="xsd:string"/>
+</message>
+
+<message name="calibrateLanguageResponse">
+ <part name="status" type="xsd:int"/>
+</message>
+
+<message name="getServerConfRequest">
+  <part name="fieldName" type="xsd:string"/>
+</message>
+
+<message name="getServerConfResponse">
+  <part name="fieldContent" type="xsd:string"/>
+</message>
+
+<message name="setServerConfRequest">
+  <part name="fieldName" type="xsd:string"/>
+  <part name="fieldContent" type="xsd:string"/>
+</message>
+
+<message name="setServerConfResponse">
+  <part name="configStatus" type="xsd:int"/>
+  <part name="errorMessage" type="xsd:string"/>
+</message>
+
+<message name="startPluginRequest">
+  <part name="uniqid" type="xsd:string"/>
+</message>
+
+<message name="startPluginResponse">
+  <part name="status" type="xsd:int"/>
+</message>
+
+<message name="stopPluginRequest">
+  <part name="uniqid" type="xsd:string"/>
+</message>
+
+<message name="stopPluginResponse">
+  <part name="status" type="xsd:int"/>
+</message>
+
+<message name="setPluginAutoloadRequest">
+  <part name="uniqid" type="xsd:string"/>
+  <part name="autoload" type="xsd:int"/>
+</message>
+
+<message name="setPluginAutoloadResponse">
+  <part name="status" type="xsd:int"/>
+</message>
+
+<portType name="eewsadmPortType">
+ <operation name="getQueue">
+  <documentation>Get compile or judge queues</documentation>
+  <input message="tns:getQueueRequest"/>
+  <output message="tns:getQueueResponse"/>
+ </operation>
+ <operation name="getPluginData">
+  <documentation>Get plugins relevant data</documentation>
+  <input message="tns:getPluginDataRequest"/>
+  <output message="tns:getPluginDataResponse"/>
+ </operation>
+ <operation name="version">
+  <documentation>Get version information from the server</documentation>
+  <input message="tns:versionRequest"/>
+  <output message="tns:versionResponse"/>
+ </operation>
+ <operation name="getPluginList">
+  <documentation>Get the list of available plugins</documentation>
+  <input message="tns:getPluginListRequest"/>
+  <output message="tns:getPluginListResponse"/>
+ </operation>
+ <operation name="getLanguageList">
+  <documentation>Get the list of available languages</documentation>
+  <input message="tns:getLanguageListRequest"/>
+  <output message="tns:getLanguageListResponse"/>
+ </operation>
+ <operation name="getServerConf">
+  <documentation>Get the server configuration</documentation>
+  <input message="tns:getServerConfRequest"/>
+  <output message="tns:getServerConfResponse"/>
+ </operation>
+ <operation name="setServerConf">
+  <documentation>Set the server configuration</documentation>
+  <input message="tns:setServerConfRequest"/>
+  <output message="tns:setServerConfResponse"/>
+ </operation>
+ <operation name="startPlugin">
+  <documentation>Starts a plugin</documentation>
+  <input message="tns:startPluginRequest"/>
+  <output message="tns:startPluginResponse"/>
+ </operation>
+ <operation name="stopPlugin">
+  <documentation>Stops a plugin</documentation>
+  <input message="tns:stopPluginRequest"/>
+  <output message="tns:stopPluginResponse"/>
+ </operation>
+ <operation name="setPluginAutoload">
+  <documentation>Sets the autoload behaviour of a plugin</documentation>
+  <input message="tns:setPluginAutoloadRequest"/>
+  <output message="tns:setPluginAutoloadResponse"/>
+ </operation>
+ <operation name="getPluginFieldList">
+  <documentation>Get configuration fields for a plugin</documentation>
+  <input message="tns:getPluginFieldListRequest"/>
+  <output message="tns:getPluginFieldListResponse"/>
+ </operation>
+ <operation name="getPluginFieldValue">
+  <documentation>Get the value of a plugin's config field</documentation>
+  <input message="tns:getPluginFieldValueRequest"/>
+  <output message="tns:getPluginFieldValueResponse"/>
+ </operation>
+ <operation name="setPluginFieldValue">
+  <documentation>Set the value of a plugin's config field</documentation>
+  <input message="tns:setPluginFieldValueRequest"/>
+  <output message="tns:setPluginFieldValueResponse"/>
+ </operation>
+ <operation name="getLanguageList">
+  <documentation>Get the list of available languages and its relevant data</documentation>
+  <input message="tns:getLanguageListRequest"/>
+  <output message="tns:getLanguageListResponse"/>
+ </operation>
+ <operation name="addLanguage">
+  <documentation>Add a new language to the system</documentation>
+  <input message="tns:addLanguageRequest"/>
+  <output message="tns:addLanguageResponse"/>
+ </operation>
+ <operation name="removeLanguage">
+  <documentation>Remove a language from the system</documentation>
+  <input message="tns:removeLanguageRequest"/>
+  <output message="tns:removeLanguageResponse"/>
+ </operation>
+ <operation name="calibrateLanguage">
+  <documentation>Calibrate language's memory usage</documentation>
+  <input message="tns:calibrateLanguageRequest"/>
+  <output message="tns:calibrateLanguageResponse"/>
+ </operation>
+</portType>
+
+<binding name="eewsadm" type="tns:eewsadmPortType">
+ <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="getQueue">
+  <SOAP:operation style="rpc" soapAction""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="getPluginData">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="version">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="getPluginList">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+    <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+    <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="getServerConf">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/enconding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="setServerConf">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodindStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="startPlugin">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodindStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="stopPlugin">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodindStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="setPluginAutoload">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodindStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="getPluginFieldList">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodindStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="getPluginFieldValue">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodindStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="setPluginFieldValue">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodindStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="getLanguageList">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="addLanguage">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="removeLanguage">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="calibrateLanguage">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:eewsadm" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+</binding>
+
+<service name="eewsadm">
+ <documentation>Evaluation Engine Web Services Administration</documentation>
+ <port name="eewsadm" binding="tns:eewsadm">
+  <SOAP:address location="http://www.edujudge.eu"/>
+ </port>
+</service>
+
+</definitions>

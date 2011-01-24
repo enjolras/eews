@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/repos/!svn/ver/937/trunk/eews/libs/eews
+END
+loCache.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/repos/!svn/ver/760/trunk/eews/libs/eews/loCache.cpp
+END
+databaseGod.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/repos/!svn/ver/686/trunk/eews/libs/eews/databaseGod.cpp
+END
+settingsGod.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/repos/!svn/ver/416/trunk/eews/libs/eews/settingsGod.h
+END
+pluginContainer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/!svn/ver/581/trunk/eews/libs/eews/pluginContainer.cpp
+END
+loObject.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/!svn/ver/937/trunk/eews/libs/eews/loObject.cpp
+END
+sandboxProcess.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/!svn/ver/559/trunk/eews/libs/eews/sandboxProcess.h
+END
+compileQueue.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/repos/!svn/ver/760/trunk/eews/libs/eews/compileQueue.h
+END
+eewsProcess.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/repos/!svn/ver/905/trunk/eews/libs/eews/eewsProcess.cpp
+END
+loCache.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/repos/!svn/ver/760/trunk/eews/libs/eews/loCache.h
+END
+databaseGod.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/repos/!svn/ver/416/trunk/eews/libs/eews/databaseGod.h
+END
+judgeQueue.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/repos/!svn/ver/761/trunk/eews/libs/eews/judgeQueue.cpp
+END
+MyQProcess.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/repos/!svn/ver/416/trunk/eews/libs/eews/MyQProcess.cpp
+END
+pluginContainer.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/!svn/ver/416/trunk/eews/libs/eews/pluginContainer.h
+END
+loObject.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/repos/!svn/ver/905/trunk/eews/libs/eews/loObject.h
+END
+eewsProcess.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/repos/!svn/ver/905/trunk/eews/libs/eews/eewsProcess.h
+END
+judgeQueue.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/!svn/ver/571/trunk/eews/libs/eews/judgeQueue.h
+END
+languageObject.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/!svn/ver/686/trunk/eews/libs/eews/languageObject.cpp
+END
+MyQProcess.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/!svn/ver/416/trunk/eews/libs/eews/MyQProcess.h
+END
+queueObject.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/repos/!svn/ver/760/trunk/eews/libs/eews/queueObject.cpp
+END
+languageObject.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/!svn/ver/686/trunk/eews/libs/eews/languageObject.h
+END
+queueObject.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/repos/!svn/ver/760/trunk/eews/libs/eews/queueObject.h
+END
+eews.pro
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/repos/!svn/ver/763/trunk/eews/libs/eews/eews.pro
+END
+languageContainer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/!svn/ver/686/trunk/eews/libs/eews/languageContainer.cpp
+END
+verdictObject.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/!svn/ver/559/trunk/eews/libs/eews/verdictObject.cpp
+END
+settingsGod.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/repos/!svn/ver/804/trunk/eews/libs/eews/settingsGod.cpp
+END
+languageContainer.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/!svn/ver/760/trunk/eews/libs/eews/languageContainer.h
+END
+verdictObject.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/repos/!svn/ver/261/trunk/eews/libs/eews/verdictObject.h
+END
+compileQueue.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/!svn/ver/760/trunk/eews/libs/eews/compileQueue.cpp
+END
+sandboxProcess.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/!svn/ver/559/trunk/eews/libs/eews/sandboxProcess.cpp
+END

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>res/cacert.pem</file>
+	<file>res/server.pem</file>
+    </qresource>
+</RCC>

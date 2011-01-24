@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src
+END
+QtServiceBase
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/QtServiceBase
+END
+qtunixsocket.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/qtunixsocket.cpp
+END
+qtservice_win.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/qtservice_win.cpp
+END
+qtservice.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/qtservice.cpp
+END
+qtunixsocket.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/qtunixsocket.h
+END
+QtServiceController
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/QtServiceController
+END
+qtservice_unix.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/qtservice_unix.cpp
+END
+qtunixserversocket.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/qtunixserversocket.cpp
+END
+qtservice_p.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/qtservice_p.h
+END
+qtservice.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/qtservice.h
+END
+qtservice.pri
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/qtservice.pri
+END
+qtunixserversocket.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/574/trunk/eews/solutions/qtservice-2.6/src/qtunixserversocket.h
+END
